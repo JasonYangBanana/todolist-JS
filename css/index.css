@@ -1,0 +1,64 @@
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  margin: 0;
+  list-style: none;
+}
+
+.todolist-wrapper {
+  width: 75%;
+  margin: 0 auto;
+}
+.todolist-wrapper .add-wrapper {
+  background-color: black;
+  padding: 20px 0;
+}
+.todolist-wrapper .add-wrapper .add-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+.todolist-wrapper .add-wrapper .add-list .input-text {
+  margin-right: 10px;
+  height: 2rem;
+  flex: 1 0 0;
+}
+.todolist-wrapper .show-wrapper {
+  background-color: gray;
+  padding: 20px 0;
+}
+.todolist-wrapper .show-wrapper .todo-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  font-size: 1.5rem;
+}
+.todolist-wrapper .show-wrapper .todo-list li {
+  margin-right: 10px;
+}
+.todolist-wrapper .show-wrapper .todo-list li:nth-child(2) {
+  flex: 1 0 0;
+}
+.todolist-wrapper .show-wrapper .todo-list li:nth-child(2) input {
+  width: 100%;
+  height: 2rem;
+}
+.todolist-wrapper .show-wrapper .todo-list li:nth-child(3) i:hover {
+  cursor: pointer;
+  color: rgba(245, 241, 43, 0.822);
+}
+.todolist-wrapper .show-wrapper .todo-list li:last-child {
+  margin-right: 0;
+}
+.todolist-wrapper .show-wrapper .todo-list li:last-child i:hover {
+  cursor: pointer;
+  color: red;
+}
+
+/*# sourceMappingURL=index.css.map */
