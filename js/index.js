@@ -20,10 +20,9 @@ function addNewTask() {
         let modifyText = document.createTextNode("Modify");
         let deleteText = document.createTextNode("Delete");
 
-        // i++;
-        // list.classList.add("Task" + i);
         checkFinished.type = "checkbox";
         listItemContent.type = "text";
+        listItemContent.disabled = true;
         
         modifyBtn.appendChild(modifyText);
         deleteBtn.appendChild(deleteText);
@@ -38,15 +37,25 @@ function addNewTask() {
 
         /* 清空input的value */
         inputContent.value = "";
+        console.log("新增Task被執行");
+
+        
         deleteBtn.addEventListener("click", deleteTask, false);
+        checkFinished.addEventListener("change", checkTaskFinished, false);
     }
 }
 
-function deleteTask() { 
+function deleteTask() {
     var listItem = this.parentNode;
     var ul = listItem.parentNode;
     ul.removeChild(listItem);
+    console.log("刪除Task被執行");
 }
+
+function checkTaskFinished() {
+    console.log("完成Task的checkbox被執行");
+}
+
 addListItemBtn.addEventListener("click", addNewTask, false);
 
 

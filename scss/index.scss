@@ -37,6 +37,11 @@ ul {
                 display: flex;
                 margin-bottom: 10px;
                 input {
+                    &:nth-child(1) {
+                        &:checked + input {
+                            text-decoration: line-through;
+                        }
+                    }
                     &:nth-child(2) {
                         flex: 1 0 0;
                     }
