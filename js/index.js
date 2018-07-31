@@ -24,8 +24,10 @@ function addNewTask() {
         listItemContent.type = "text";
         listItemContent.disabled = true;
         
+        /* 修改、刪除按鈕建立文字 */
         modifyBtn.appendChild(modifyText);
         deleteBtn.appendChild(deleteText);
+
         listItem.appendChild(checkFinished);
         listItem.appendChild(listItemContent);
         listItem.appendChild(modifyBtn);
@@ -39,21 +41,40 @@ function addNewTask() {
         inputContent.value = "";
         console.log("新增Task被執行");
 
-        
+        /* 監聽區 */
         deleteBtn.addEventListener("click", deleteTask, false);
         checkFinished.addEventListener("change", checkTaskFinished, false);
+        modifyBtn.addEventListener("click", modifyTask, false);
+
     }
 }
 
 function deleteTask() {
-    var listItem = this.parentNode;
-    var ul = listItem.parentNode;
+    let listItem = this.parentNode;
+    let ul = listItem.parentNode;
     ul.removeChild(listItem);
     console.log("刪除Task被執行");
 }
 
 function checkTaskFinished() {
     console.log("完成Task的checkbox被執行");
+}
+function modifyTask() {
+    let listItem = this.parentNode;
+    listItem.childNodes[1].disabled = false;
+    console.log("修改Task被執行");
+    listItem.childNodes[1].addEventListener("keydown", confirmModifyContent, false);
+}
+
+/*  */
+function confirmModifyContent(e) {
+    if (13 == e.keyCode) {
+        let listItem = this.parentNode;
+        listItem.childNodes[1].disabled = true;
+        console.log("你按了Enter鍵");
+    } else {
+        console.log("你沒按Enter鍵");
+    }
 }
 
 addListItemBtn.addEventListener("click", addNewTask, false);
