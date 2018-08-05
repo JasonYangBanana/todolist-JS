@@ -3,6 +3,10 @@
 let addTask = document.getElementById('addListItem');
 let inputContent = addTask.childNodes[1];
 let addListItemBtn = addTask.childNodes[3];
+//filter
+let ongoingTask = document.getElementById('ongoingTask');
+let doneTask = document.getElementById('doneTask');
+let allTask = document.getElementById('allTask');
 //視覺-顯示區
 let showList = document.getElementById('showList');
 
@@ -49,6 +53,16 @@ function addNewTask() {
         checkFinished.addEventListener("change", checkTaskFinished, false);
         modifyBtn.addEventListener("click", modifyTask, false);
 
+        /* filter */
+        ongoingTask.addEventListener("click", showOngoingTask, false);
+        doneTask.addEventListener("click", showDoneTask, false);
+        allTask.addEventListener("click", showAllTask, false);
+    }
+}
+
+function addNewTaskByEnter(e) {
+    if (13 == e.keyCode) {
+        addNewTask();
     }
 }
 
@@ -76,15 +90,45 @@ function modifyTask() {
 function confirmModifyContent(e) {
     if (13 == e.keyCode) {
         let listItem = this.parentNode;
-        listItem.childNodes[0].disabled = false;
-        listItem.childNodes[1].disabled = true;
-        listItem.childNodes[2].disabled = false;
-        listItem.childNodes[3].disabled = false;
-        console.log("你按了Enter鍵");
+        if (listItem.childNodes[1].value === "") {
+            var del = confirm("你確定要刪除Task？");
+            if (del === true){
+            let ul = listItem.parentNode;
+            ul.removeChild(listItem);    
+            console.log("你按了Enter鍵，因沒有內文，刪除了Task");
+            }
+        } else { 
+            listItem.childNodes[0].disabled = false;
+            listItem.childNodes[1].disabled = true;
+            listItem.childNodes[2].disabled = false;
+            listItem.childNodes[3].disabled = false;
+            console.log("你按了Enter鍵，修改了Task");
+        }
     } else {
         console.log("你沒按Enter鍵");
     }
 }
 
+function showOngoingTask() {
+    /* let finishedCheckbox = document.querySelector('input[type=checkbox]'); */
+    if (finishedCheckbox.checked = true) {
+        console.log("checked");
+    } else {
+        console.log("nochecked");
+    }
+    console.log("show ongoing task");
+}
+
+function showDoneTask() {
+    console.log("show done task");
+}
+
+function showAllTask() {
+    console.log("show all task");
+}
+
 addListItemBtn.addEventListener("click", addNewTask, false);
+inputContent.addEventListener("keydown", addNewTaskByEnter, false);
+
+
 

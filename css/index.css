@@ -27,9 +27,16 @@ ul li {
   height: 2rem;
   flex: 1 0 0;
 }
+.todolist-wrapper .filter-wrapper {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+.todolist-wrapper .filter-wrapper .flex-item {
+  flex: 1 0 0;
+}
 .todolist-wrapper .show-wrapper {
   background-color: gray;
-  padding: 20px 0;
 }
 .todolist-wrapper .show-wrapper .todo-list {
   width: 80%;
@@ -39,6 +46,13 @@ ul li {
 .todolist-wrapper .show-wrapper .todo-list li {
   display: flex;
   margin-bottom: 10px;
+}
+.todolist-wrapper .show-wrapper .todo-list li:first-child {
+  padding-top: 20px;
+}
+.todolist-wrapper .show-wrapper .todo-list li:last-child {
+  padding-bottom: 20px;
+  margin-bottom: 0;
 }
 .todolist-wrapper .show-wrapper .todo-list li input:nth-child(1):checked + input {
   text-decoration: line-through;
