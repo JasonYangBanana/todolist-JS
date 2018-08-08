@@ -10,9 +10,9 @@ ul li {
 .todolist-wrapper {
   width: 75%;
   margin: 0 auto;
+  background-image: linear-gradient(to bottom, green, blue, indigo, purple);
 }
 .todolist-wrapper .add-wrapper {
-  background-color: black;
   padding: 20px 0;
 }
 .todolist-wrapper .add-wrapper .add-list {
@@ -35,23 +35,20 @@ ul li {
 .todolist-wrapper .filter-wrapper .flex-item {
   flex: 1 0 0;
 }
-.todolist-wrapper .show-wrapper {
-  background-color: gray;
+.todolist-wrapper .filter-wrapper .active {
+  background-color: red;
 }
 .todolist-wrapper .show-wrapper .todo-list {
   width: 80%;
   margin: 0 auto;
   font-size: 1.5rem;
+  padding: 20px 0;
 }
 .todolist-wrapper .show-wrapper .todo-list li {
   display: flex;
   margin-bottom: 10px;
 }
-.todolist-wrapper .show-wrapper .todo-list li:first-child {
-  padding-top: 20px;
-}
 .todolist-wrapper .show-wrapper .todo-list li:last-child {
-  padding-bottom: 20px;
   margin-bottom: 0;
 }
 .todolist-wrapper .show-wrapper .todo-list li input:nth-child(1):checked + input {

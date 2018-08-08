@@ -49,6 +49,8 @@ function addNewTask() {
         console.log("新增Task被執行");
 
         /* 監聽listItem上的互動 */
+        //let li = document.getElementsByTagName("li");
+
         deleteBtn.addEventListener("click", deleteTask, false);
         checkFinished.addEventListener("change", checkTaskFinished, false);
         modifyBtn.addEventListener("click", modifyTask, false);
@@ -74,7 +76,59 @@ function deleteTask() {
 }
 
 function checkTaskFinished() {
-    console.log("是否完成Task的checkbox被執行");
+
+    console.log("是否完成Task的checkbox被點擊");
+}
+
+function showOngoingTask() {
+    ongoingTask.classList.add("active");
+    doneTask.classList.remove("active");
+    allTask.classList.remove("active");
+
+    let finishedCheckbox = document.querySelectorAll('input[type=checkbox]');
+    for (let taskNum = 0; taskNum < finishedCheckbox.length; taskNum++){
+        let listItem = finishedCheckbox[taskNum].parentNode;
+        if (finishedCheckbox[taskNum].checked) {
+            listItem.style = "display: none";
+        } else {
+            listItem.style = "display: flex";
+        }
+    }
+    console.log("顯示ongoing task");
+}
+
+function showDoneTask() {
+    ongoingTask.classList.remove("active");
+    doneTask.classList.add("active");
+    allTask.classList.remove("active");
+
+    let finishedCheckbox = document.querySelectorAll('input[type=checkbox]');
+    for (let taskNum = 0; taskNum < finishedCheckbox.length; taskNum++) {
+        let listItem = finishedCheckbox[taskNum].parentNode;
+        if (finishedCheckbox[taskNum].checked === true) {
+            listItem.style = "display: flex";
+        } else {
+            listItem.style = "display: none";
+        }
+    }
+    console.log("顯示done task");
+}
+
+function showAllTask() {
+    ongoingTask.classList.remove("active");
+    doneTask.classList.remove("active");
+    allTask.classList.add("active");
+    
+    let finishedCheckbox = document.querySelectorAll('input[type=checkbox]');
+    for (let taskNum = 0; taskNum < finishedCheckbox.length; taskNum++) {
+        let listItem = finishedCheckbox[taskNum].parentNode;
+        if (finishedCheckbox[taskNum].checked === true) {
+            listItem.style = "display: flex";
+        } else {
+            listItem.style = "display: flex";
+        }
+    }
+    console.log("顯示all task");
 }
 
 function modifyTask() {
@@ -109,23 +163,7 @@ function confirmModifyContent(e) {
     }
 }
 
-function showOngoingTask() {
-    /* let finishedCheckbox = document.querySelector('input[type=checkbox]'); */
-    if (finishedCheckbox.checked = true) {
-        console.log("checked");
-    } else {
-        console.log("nochecked");
-    }
-    console.log("show ongoing task");
-}
 
-function showDoneTask() {
-    console.log("show done task");
-}
-
-function showAllTask() {
-    console.log("show all task");
-}
 
 addListItemBtn.addEventListener("click", addNewTask, false);
 inputContent.addEventListener("keydown", addNewTaskByEnter, false);
