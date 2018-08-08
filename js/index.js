@@ -74,19 +74,15 @@ function deleteTask() {
 }
 
 function checkTaskFinished() {
+    let task = this.parentNode;
     switch (true) {
         case ongoingTask.classList.contains("active"):
-            
-            console.log("ongoing");
+            task.style = "display: none;";
             break;
         case doneTask.classList.contains("active"):
-            console.log("done");
-            break;
-        case allTask.classList.contains("active"):
-            console.log("all");
+            task.style = "display: none;";
             break;
         default:
-            console.log("default");
     }
     console.log("是否完成Task的checkbox被點擊");
 }
@@ -100,9 +96,9 @@ function showOngoingTask() {
     for (let taskNum = 0; taskNum < finishedCheckbox.length; taskNum++){
         let task = finishedCheckbox[taskNum].parentNode;
         if (finishedCheckbox[taskNum].checked) {
-            task.style = "display: none";
+            task.style = "display: none;";
         } else {
-            task.style = "display: flex";
+            task.style = "display: flex;";
         }
     }
     console.log("顯示ongoing task");
