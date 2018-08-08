@@ -1,7 +1,7 @@
 /* 宣告變數區 */
 //視覺-輸入區
 let addTask = document.getElementById('addTask');
-let inputContent = addTask.childNodes[1];
+let userInput = addTask.childNodes[1];
 let addtaskBtn = addTask.childNodes[3];
 //filter
 let ongoingTask = document.getElementById('ongoingTask');
@@ -15,7 +15,7 @@ function addNewTask() {
     if (doneTask.classList.contains("active")) {
         alert("請切換到ongoing或all分頁，才能新增task");
         return;
-    } else if (inputContent.value === "") {
+    } else if (userInput.value === "") {
         alert("你還沒輸入task")
         return;
     } 
@@ -23,7 +23,7 @@ function addNewTask() {
     let task = document.createElement("li");
 
     let checkFinished = document.createElement("input");
-    let userInput = document.createElement("input");
+    let inputContent = document.createElement("input");
     let modifyBtn = document.createElement("button");
     let deleteBtn = document.createElement("button");
 
@@ -31,24 +31,24 @@ function addNewTask() {
     let deleteText = document.createTextNode("Delete");
 
     checkFinished.type = "checkbox";
-    userInput.type = "text";
-    userInput.disabled = true;
+    inputContent.type = "text";
+    inputContent.disabled = true;
     
     /* 修改、刪除按鈕，插入文字 */
     modifyBtn.appendChild(modifyText);
     deleteBtn.appendChild(deleteText);
 
     task.appendChild(checkFinished);
-    task.appendChild(userInput);
+    task.appendChild(inputContent);
     task.appendChild(modifyBtn);
     task.appendChild(deleteBtn);
     showTask.appendChild(task);
 
     /* 將user的input值導入顯示區的內文 */
-    userInput.value = inputContent.value;
+    inputContent.value = userInput.value;
 
     /* 清空user輸入區input的value */
-    inputContent.value = "";
+    userInput.value = "";
     console.log("新增Task被執行");
     /* 監聽task上的互動 */
     deleteBtn.addEventListener("click", deleteTask, false);
@@ -171,7 +171,7 @@ function confirmModifyContent(e) {
 }
 
 addtaskBtn.addEventListener("click", addNewTask, false);
-inputContent.addEventListener("keydown", addNewTaskByEnter, false);
+userInput.addEventListener("keydown", addNewTaskByEnter, false);
 ongoingTask.addEventListener("click", showOngoingTask, false);
 doneTask.addEventListener("click", showDoneTask, false);
 allTask.addEventListener("click", showAllTask, false);
