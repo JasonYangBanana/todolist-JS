@@ -8,9 +8,14 @@ ul li {
 }
 
 .todolist-wrapper {
-  width: 75%;
+  width: 100%;
   margin: 0 auto;
   background-image: linear-gradient(to bottom, green, blue, indigo, purple);
+}
+@media (min-width: 576px) {
+  .todolist-wrapper {
+    width: 80%;
+  }
 }
 .todolist-wrapper .add-wrapper {
   padding: 20px 0;
